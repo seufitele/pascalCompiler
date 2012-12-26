@@ -15,14 +15,25 @@ import com.github.detentor.codexcompiler.message.MessageHandler;
  * @author Vinicius Seufitele
  *
  */
-public abstract class Backend
+public abstract class BackEnd
 {
-	protected static MessageHandler messageHandler = new MessageHandler();
+	protected final MessageHandler messageHandler = new MessageHandler();
 	protected SymbolTable symbolTable;
 	protected IntermediateCode iCode;
 	
+	protected BackEnd(SymbolTable symbolTable, IntermediateCode iCode)
+	{
+		super();
+		this.symbolTable = symbolTable;
+		this.iCode = iCode;
+	}
+
+	public abstract void process();
 	
 
-	public abstract void process(); 
+	public MessageHandler getMessageHandler()
+	{
+		return messageHandler;
+	} 
 	
 }

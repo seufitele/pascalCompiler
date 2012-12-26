@@ -17,7 +17,7 @@ public abstract class Scanner
 	 * Cria um Scanner para o arquivo-fonte passado como parâmetro
 	 * @param source
 	 */
-	public Scanner(final Source source)
+	protected Scanner(final Source source)
 	{
 		this.source = source;
 	}

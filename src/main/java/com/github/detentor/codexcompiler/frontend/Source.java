@@ -18,7 +18,7 @@ public class Source
 	public static final char EOL = '\n'; // end-of-line character
 	public static final char EOF = (char) 0; // end-of-file character
 
-	protected final MessageHandler messageHandler;
+	protected final MessageHandler messageHandler = new MessageHandler();
 	protected final BufferedReader reader; // reader for the source program
 	protected String line; // source line
 	protected int lineNum; // current source line number
@@ -34,7 +34,6 @@ public class Source
 		this.lineNum = 0;
 		this.currentPos = -2; // set to -2 to read the first source line
 		this.reader = reader;
-		this.messageHandler = messageHandler;
 	}
 
 	/**
@@ -44,6 +43,12 @@ public class Source
 	 */
 	public char currentChar()
 	{
+		//NOTAS DE IMPLEMENTAÇÃO:
+		//Esse método funciona utilizando a linha atual como 'buffer': quando a linha acaba,
+		//ele pega a linha novamente do arquivo. Pode-se substituir por um iterador de arquivo em linhas.
+		//só observar porque o iterador deve retornar, no fim de cada, o caracter de fim de linha (EOL), e,
+		//no fim da iteração, também.
+		
 		// First time?
 		if (currentPos == -2)
 		{
@@ -145,4 +150,9 @@ public class Source
 		return currentPos;
 	}
 
+	public MessageHandler getMessageHandler()
+	{
+		return messageHandler;
+	}
+	
 }

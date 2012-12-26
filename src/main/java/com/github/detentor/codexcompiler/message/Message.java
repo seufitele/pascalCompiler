@@ -2,8 +2,8 @@ package com.github.detentor.codexcompiler.message;
 
 public class Message
 {
-	private MessageType type;
-    private Object body;
+	private final MessageType type;
+    private final Object body;
  
     /**
      * Constructor.
@@ -16,4 +16,14 @@ public class Message
         this.body = body;
     }
 
+	public MessageType getType()
+	{
+		return type;
+	}
+
+	public Object getBody()
+	{
+		return body;
+	}
+    
 }
